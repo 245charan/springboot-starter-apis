@@ -3,6 +3,7 @@ package com.codingshuttle.charanTutorialStarterApis.springboot_starter_apis.conf
 import com.codingshuttle.charanTutorialStarterApis.springboot_starter_apis.DB;
 import com.codingshuttle.charanTutorialStarterApis.springboot_starter_apis.DevDB;
 import com.codingshuttle.charanTutorialStarterApis.springboot_starter_apis.ProdDB;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
@@ -20,5 +21,10 @@ public class AppConfig {
     @ConditionalOnProperty(name = "project.mode", havingValue = "production")
     public DB getProdDBBean() {
         return new ProdDB();
+    }
+
+    @Bean
+    public ModelMapper getModelMapper(){
+        return new ModelMapper();
     }
 }
